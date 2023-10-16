@@ -1,7 +1,7 @@
 function LoginPage() {
   return (
     <div>
-      <h1>Welcome to Login Page</h1>
+      <h1>Welcome to LogIn</h1>
     </div>
   );
 }

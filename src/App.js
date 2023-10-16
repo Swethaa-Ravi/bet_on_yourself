@@ -1,11 +1,20 @@
-// import LoginPage from "./components/LoginPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import LoginPage from "./pages/Login";
+import HomePage from "./pages/Home";
+import SignUpPage from "./pages/SignUp";
+import AboutUsPage from "./pages/AboutUs";
 
 function App() {
   return (
-    <div>
-      <h1>Welcome to Home Page</h1>
-      <h2>A No B.S Platform where you can turn your dreams into reality</h2>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/logIn" element={<LoginPage />} />
+        <Route path="/signUp" element={<SignUpPage />} />
+        <Route path="/aboutUs" element={<AboutUsPage />} />
+      </Routes>
+    </Router>
   );
 }
 
