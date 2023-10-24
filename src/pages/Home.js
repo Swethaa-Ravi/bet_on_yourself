@@ -3,10 +3,12 @@ import jeffToAdo from "../assests/images/jeffToAdo.png";
 import adoHope from "../assests/images/adonis1.png";
 import adoGreatness from "../assests/images/adonis.png";
 import adoHand from "../assests/images/adonisHand.png";
+import Navbar from "../components/Navbar";
 
 function HomePage() {
   return (
     <div>
+      <Navbar />
       <h1>Welcome to Home Page</h1>
       <h2>A No B.S Platform where you can turn your dreams into reality</h2>
       <h2>A Path to Greatness</h2>

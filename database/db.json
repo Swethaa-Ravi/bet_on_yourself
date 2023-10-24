@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "name": "swethaa ravi",
+      "id": "swethaaravi06@gmail.com",
+      "password": "123456"
+    },
+    {
+      "name": "Varun Veerbhadra",
+      "id": "varunveerbadra@gmail.com",
+      "password": "12345678"
+    }
+  ]
+}
