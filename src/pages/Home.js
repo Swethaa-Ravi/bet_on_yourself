@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 function HomePage() {
   return (
     <div>
+      <h1>Bet On Self</h1>
       <Navbar />
       <h1>Welcome to Home Page</h1>
       <h2>A No B.S Platform where you can turn your dreams into reality</h2>

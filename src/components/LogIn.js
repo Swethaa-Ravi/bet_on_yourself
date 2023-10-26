@@ -1,9 +1,8 @@
-import Modal from "react-modal";
 import { useState } from "react";
+import { updateToken } from "../api/tempAuth";
+import { getName, updateName } from "../api/loginDetails";
 
 const LogIn = () => {
-  const [visible, setVisible] = useState(false);
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -28,7 +27,10 @@ const LogIn = () => {
           console.log("Enter Valid User!");
         } else {
           if (formData.password === resp.password) {
-            console.log("Verification Sucessful");
+            alert("Verification Sucessful");
+            updateToken(true);
+            updateName(resp.fname);
+            console.log(getName());
           }
         }
       })
@@ -39,34 +41,30 @@ const LogIn = () => {
 
   return (
     <div>
-      <button onClick={() => setVisible(true)}>Log In</button>
-      <Modal isOpen={visible}>
-        <button onClick={() => setVisible(false)}>X</button>
-        <h2>Log In</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-            />
-          </div>
-          <button type="submit">Login</button>
-        </form>
-      </Modal>
+      <h2>Log In</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 };

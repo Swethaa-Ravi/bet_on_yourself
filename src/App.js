@@ -1,20 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import LoginPage from "./pages/Login";
 import HomePage from "./pages/Home";
 import AboutUsPage from "./pages/AboutUs";
-import ProgSignUpPage from "./pages/ProgSignUp";
 import ProgressPage from "./pages/Progress";
+import PrivateRoutes from "./utilis/privateRoutes";
+import ProgSignUpPage from "./pages/ProgSignUp";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/logIn" element={<LoginPage />} />
-        <Route path="/progSignUp" element={<ProgSignUpPage />} />
-        <Route path="/progress" element={<ProgressPage />} />
         <Route path="/aboutUs" element={<AboutUsPage />} />
+        <Route path="/progSignUp" element={<ProgSignUpPage />} />
+
+        <Route element={<PrivateRoutes />}>
+          <Route path="/progress" element={<ProgressPage />} />
+        </Route>
       </Routes>
     </Router>
   );

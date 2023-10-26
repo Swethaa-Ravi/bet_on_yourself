@@ -1,10 +1,9 @@
-import Modal from "react-modal";
 import { useState } from "react";
 
 const SignUp = () => {
-  const [visible, setVisible] = useState(false);
   const initialFormData = {
-    name: "",
+    fname: "",
+    lname: "",
     id: "",
     password: "",
   };
@@ -27,52 +26,61 @@ const SignUp = () => {
       body: JSON.stringify(formData),
     })
       .then((res) => {
-        console.log("Registered successfully.");
+        if (!res.ok) {
+          throw new Error("Sign Up Failed"); // Throw an error if the response is not OK
+        }
+        alert("Sign Up Successful");
       })
       .catch((err) => {
-        console.log("Failed :" + err.message);
+        console.log("Failed: " + err.message); // Set the error message in the state
       });
   };
   return (
     <div>
-      <button onClick={() => setVisible(true)}>Sign In</button>
-      <Modal isOpen={visible}>
-        <button onClick={() => setVisible(false)}>X</button>
-        <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="id"
-              value={formData.id}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-            />
-          </div>
-          <button type="submit">Update Data</button>
-        </form>
-      </Modal>
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="fname">First Name</label>
+          <input
+            type="text"
+            id="fname"
+            name="fname"
+            value={formData.fname}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="lname">Last Name</label>
+          <input
+            type="text"
+            id="lname"
+            name="lname"
+            value={formData.lname}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="id"
+            value={formData.id}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
     </div>
   );
 };
