@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import { getToken, updateToken } from "../api/tempAuth";
-import { getName } from "../api/loginDetails";
+import { getName, updateName, updateId } from "../api/loginDetails";
+
+Modal.setAppElement("#root");
 
 const Navbar = () => {
   const [signUpVisible, setSignUpVisible] = useState(false);
@@ -41,6 +43,8 @@ const Navbar = () => {
   const handleSignOut = () => {
     updateToken(false);
     setIsLoggedIn(false);
+    updateId(null);
+    updateName(null);
   };
 
   return (

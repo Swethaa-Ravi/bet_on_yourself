@@ -1,36 +1,45 @@
 import { useState } from "react";
 import { updateToken } from "../api/tempAuth";
-import { getName, updateName } from "../api/loginDetails";
+import {
+  updateName,
+  updateId,
+  updateAddnDone,
+  updateCategoryDone,
+  updatePaymentDone,
+} from "../api/loginDetails";
 
-const LogIn = () => {
-  const [formData, setFormData] = useState({
+const LogIn = ({ onLoginSuccess }) => {
+  const [loginForm, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const handleInputChange = (event) => {
+  const handleLoginChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...loginForm, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
-    console.log(formData); // Log the login data
-
-    fetch("http://localhost:8000/users/" + formData.email)
+    fetch("http://localhost:8000/users/" + loginForm.email)
       .then((res) => {
         return res.json();
       })
       .then((resp) => {
-        console.log(resp);
         if (Object.keys(resp).length === 0) {
-          console.log("Enter Valid User!");
+          alert("Enter Valid User!");
         } else {
-          if (formData.password === resp.password) {
-            alert("Verification Sucessful");
+          if (loginForm.password === resp.password) {
+            alert("Verification Successful");
             updateToken(true);
             updateName(resp.fname);
-            console.log(getName());
+            updateId(resp.id);
+            updateAddnDone(resp.isAddnDataEntered);
+            updateCategoryDone(resp.isCategoryAdded);
+            updatePaymentDone(resp.isPaymentDone);
+            onLoginSuccess();
+          } else {
+            alert("Email & Password doesn't match");
           }
         }
       })
@@ -42,15 +51,15 @@ const LogIn = () => {
   return (
     <div>
       <h2>Log In</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
             name="email"
-            value={formData.email}
-            onChange={handleInputChange}
+            value={loginForm.email}
+            onChange={handleLoginChange}
           />
         </div>
         <div>
@@ -59,8 +68,8 @@ const LogIn = () => {
             type="password"
             id="password"
             name="password"
-            value={formData.password}
-            onChange={handleInputChange}
+            value={loginForm.password}
+            onChange={handleLoginChange}
           />
         </div>
         <button type="submit">Login</button>

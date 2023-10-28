@@ -6,24 +6,26 @@ const SignUp = () => {
     lname: "",
     id: "",
     password: "",
+    isAddnDataEntered: false,
+    isCategoryAdded: false,
+    isPaymentDone: false,
   };
 
-  const [formData, setFormData] = useState(initialFormData);
+  const [signUpForm, setSignUpData] = useState(initialFormData);
 
-  const handleInputChange = (event) => {
+  const handleSignUpChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setSignUpData({ ...signUpForm, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault();
-    console.log(formData); // Log the form data
-    setFormData(initialFormData); // Clear the form after submission
+    setSignUpData(initialFormData); // Clear the form after submission
 
     fetch("http://localhost:8000/users", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(signUpForm),
     })
       .then((res) => {
         if (!res.ok) {
@@ -38,15 +40,15 @@ const SignUp = () => {
   return (
     <div>
       <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignUp}>
         <div>
           <label htmlFor="fname">First Name</label>
           <input
             type="text"
             id="fname"
             name="fname"
-            value={formData.fname}
-            onChange={handleInputChange}
+            value={signUpForm.fname}
+            onChange={handleSignUpChange}
           />
         </div>
         <div>
@@ -55,8 +57,8 @@ const SignUp = () => {
             type="text"
             id="lname"
             name="lname"
-            value={formData.lname}
-            onChange={handleInputChange}
+            value={signUpForm.lname}
+            onChange={handleSignUpChange}
           />
         </div>
         <div>
@@ -65,8 +67,8 @@ const SignUp = () => {
             type="email"
             id="email"
             name="id"
-            value={formData.id}
-            onChange={handleInputChange}
+            value={signUpForm.id}
+            onChange={handleSignUpChange}
           />
         </div>
         <div>
@@ -75,8 +77,8 @@ const SignUp = () => {
             type="password"
             id="password"
             name="password"
-            value={formData.password}
-            onChange={handleInputChange}
+            value={signUpForm.password}
+            onChange={handleSignUpChange}
           />
         </div>
         <button type="submit">Sign Up</button>

@@ -4,13 +4,77 @@
       "fname": "Swethaa",
       "lname": "Ravi",
       "id": "swethaaravi06@gmail.com",
-      "password": "123456"
+      "password": "123456",
+      "isAddnDataEntered": true,
+      "isCategoryAdded": true,
+      "isPaymentDone": true,
+      "addnInfo": {
+        "location": "pune",
+        "age": "22",
+        "occupation": "data scientist"
+      },
+      "selectedCategories": [
+        "sleep",
+        "cardio"
+      ],
+      "selectedOption": "upi"
     },
     {
       "fname": "Varun",
       "lname": "Veerbhadra",
       "id": "varunveerbadra@gmail.com",
-      "password": "12345678"
+      "password": "12345678",
+      "isAddnDataEntered": true,
+      "isCategoryAdded": true,
+      "isPaymentDone": true,
+      "addnInfo": {
+        "location": "coimbatore",
+        "age": "22",
+        "occupation": "web developer"
+      },
+      "selectedCategories": [
+        "sleep",
+        "cardio"
+      ],
+      "selectedOption": "wallets"
+    },
+    {
+      "fname": "Keshava",
+      "lname": "Raja",
+      "id": "keshav@gmail.com",
+      "password": "12345678",
+      "isAddnDataEntered": true,
+      "isCategoryAdded": true,
+      "isPaymentDone": true,
+      "addnInfo": {
+        "location": "chennai",
+        "age": "21",
+        "occupation": "student"
+      },
+      "selectedCategories": [
+        "sleep",
+        "cardio"
+      ],
+      "selectedOption": "upi"
+    },
+    {
+      "fname": "Tharun",
+      "lname": "Kumar",
+      "id": "tharun@gmail.com",
+      "password": "12345678",
+      "isAddnDataEntered": true,
+      "isCategoryAdded": true,
+      "isPaymentDone": true,
+      "addnInfo": {
+        "location": "chennai",
+        "age": "22",
+        "occupation": "student"
+      },
+      "selectedCategories": [
+        "yoga",
+        "morningRoutine"
+      ],
+      "selectedOption": "upi"
     }
   ]
 }
