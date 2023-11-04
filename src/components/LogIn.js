@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { updateToken } from "../api/tempAuth";
+import { updateName, updateId } from "../api/loginDetails";
 import {
-  updateName,
-  updateId,
   updateAddnDone,
   updateCategoryDone,
   updatePaymentDone,
-} from "../api/loginDetails";
+  updateNoOfDaysDone,
+} from "../utilis/variables";
 
 const LogIn = ({ onLoginSuccess }) => {
   const [loginForm, setFormData] = useState({
@@ -36,8 +36,8 @@ const LogIn = ({ onLoginSuccess }) => {
             updateId(resp.id);
             updateAddnDone(resp.isAddnDataEntered);
             updateCategoryDone(resp.isCategoryAdded);
+            updateNoOfDaysDone(resp.isNoOfDaysEntered);
             updatePaymentDone(resp.isPaymentDone);
-            // onLoginSuccess();
           } else {
             alert("Email & Password doesn't match");
           }

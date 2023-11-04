@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-import { getId, updateCategoryDone } from "../api/loginDetails";
+import { getId } from "../api/loginDetails";
+
+import { updateCategoryDone, updateCategoryEntered } from "../utilis/variables";
 
 const Category = ({ onCategoryEnterSuccess }) => {
   const initialCategoryForm = {
@@ -52,6 +54,7 @@ const Category = ({ onCategoryEnterSuccess }) => {
               }
               alert("Success!");
               updateCategoryDone(true);
+              updateCategoryEntered(selectedCategories);
               onCategoryEnterSuccess();
             })
             .catch((err) => {

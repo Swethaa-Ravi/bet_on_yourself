@@ -1,29 +1,6 @@
 {
   "users": [
     {
-      "fname": "Swethaa",
-      "lname": "Ravi",
-      "id": "swethaaravi06@gmail.com",
-      "password": "123456",
-      "isAddnDataEntered": true,
-      "isCategoryAdded": true,
-      "isNoOfDaysEntered": true,
-      "isPaymentDone": true,
-      "isProgramStart": false,
-      "addnInfo": {
-        "location": "pune",
-        "age": "22",
-        "occupation": "data scientist"
-      },
-      "selectedCategories": [
-        "sleep",
-        "cardio"
-      ],
-      "selectedOption": "upi",
-      "programStartDateTime": "28/10/2023, 3:11:50 pm",
-      "selectedNoOfDays": "21"
-    },
-    {
       "fname": "Varun",
       "lname": "Veerbhadra",
       "id": "varunveerbadra@gmail.com",
@@ -33,19 +10,123 @@
       "isNoOfDaysEntered": true,
       "isPaymentDone": true,
       "isProgramStart": true,
+      "programData": [
+        {
+          "day": 1,
+          "dayData": [
+            {
+              "category": "sleep",
+              "categoryURL": "",
+              "categoryStatus": true
+            },
+            {
+              "category": "cardio",
+              "categoryURL": "",
+              "categoryStatus": false
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "dayData": [
+            {
+              "category": "sleep",
+              "categoryURL": "",
+              "categoryStatus": false
+            },
+            {
+              "category": "cardio",
+              "categoryURL": "",
+              "categoryStatus": false
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "dayData": [
+            {
+              "category": "sleep",
+              "categoryURL": "",
+              "categoryStatus": false
+            },
+            {
+              "category": "cardio",
+              "categoryURL": "",
+              "categoryStatus": false
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "dayData": [
+            {
+              "category": "sleep",
+              "categoryURL": "",
+              "categoryStatus": false
+            },
+            {
+              "category": "cardio",
+              "categoryURL": "",
+              "categoryStatus": false
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "dayData": [
+            {
+              "category": "sleep",
+              "categoryURL": "",
+              "categoryStatus": false
+            },
+            {
+              "category": "cardio",
+              "categoryURL": "",
+              "categoryStatus": false
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "dayData": [
+            {
+              "category": "sleep",
+              "categoryURL": "",
+              "categoryStatus": false
+            },
+            {
+              "category": "cardio",
+              "categoryURL": "",
+              "categoryStatus": false
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "dayData": [
+            {
+              "category": "sleep",
+              "categoryURL": "",
+              "categoryStatus": false
+            },
+            {
+              "category": "cardio",
+              "categoryURL": "",
+              "categoryStatus": false
+            }
+          ]
+        }
+      ],
       "addnInfo": {
         "location": "coimbatore",
         "age": "22",
         "occupation": "web developer"
       },
-      "selectedCategories": [
-        "sleep",
-        "cardio"
-      ],
-      "selectedNoOfDays": "14",
-      "selectedOption": "upi",
-      "programStartDateTime": "2023-11-04T02:41:46.358Z",
-      "programEndDateTime": "2023-11-18T02:41:46.358Z"
+      "selectedCategories": ["sleep", "cardio"],
+      "selectedNoOfDays": "7",
+      "selectedOption": "wallets",
+      "programStartDateTime": "2023-11-04T12:37:20.599Z",
+      "programEndDateTime": "2023-11-11T12:37:20.599Z"
     }
   ]
 }

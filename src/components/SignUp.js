@@ -11,6 +11,7 @@ const SignUp = () => {
     isNoOfDaysEntered: false,
     isPaymentDone: false,
     isProgramStart: false,
+    programData: [],
   };
 
   const [signUpForm, setSignUpData] = useState(initialFormData);

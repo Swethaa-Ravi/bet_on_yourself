@@ -10,14 +10,13 @@ import NoOfDays from "../components/NoOfDays";
 import programStart from "../components/ProgramStart";
 
 import { getToken } from "../api/tempAuth";
-
+import { getName } from "../api/loginDetails";
 import {
   getAddnDone,
   getCategoryDone,
   getPaymentDone,
   getNoOfDaysDone,
-  getName,
-} from "../api/loginDetails";
+} from "../utilis/variables";
 import { getNoOfDaysEntered } from "../utilis/variables";
 import LogIn from "../components/LogIn";
 
@@ -79,7 +78,6 @@ function ProgSignUpPage() {
 
       {isAddnDataEnter ? (
         <div>
-          {" "}
           <div>
             <h3>You have Successfully entered the Additional Details</h3>
             <h3>2 out of 5 steps done!</h3>

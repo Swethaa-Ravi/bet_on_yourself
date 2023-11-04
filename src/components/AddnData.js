@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { updateAddnDone } from "../api/loginDetails";
+import { updateAddnDone } from "../utilis/variables";
 
 import { getId } from "../api/loginDetails";
 

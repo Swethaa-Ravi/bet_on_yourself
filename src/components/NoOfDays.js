@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { updateNoOfDaysDone } from "../api/loginDetails";
+import { updateNoOfDaysDone } from "../utilis/variables";
 
 import { getId } from "../api/loginDetails";
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { getId, updatePaymentDone } from "../api/loginDetails";
+import { getId } from "../api/loginDetails";
+import { updatePaymentDone } from "../utilis/variables";
 
 const PaymentPortal = ({ onPaymentEnterSuccess }) => {
   const [selectedOption, setSelectedOption] = useState("");
