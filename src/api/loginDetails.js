@@ -2,6 +2,7 @@ let logName = "";
 let logId = "";
 let AddnDone = false;
 let CategoryDone = false;
+let DaysDone = false;
 let PaymentDone = false;
 
 function updateName(value) {
@@ -36,6 +37,14 @@ function getCategoryDone() {
   return CategoryDone;
 }
 
+function updateNoOfDaysDone(value) {
+  DaysDone = value;
+}
+
+function getNoOfDaysDone() {
+  return DaysDone;
+}
+
 function updatePaymentDone(value) {
   PaymentDone = value;
 }
@@ -53,6 +62,8 @@ export {
   getAddnDone,
   updateCategoryDone,
   getCategoryDone,
+  updateNoOfDaysDone,
+  getNoOfDaysDone,
   updatePaymentDone,
   getPaymentDone,
 };

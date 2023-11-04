@@ -2,8 +2,6 @@ import { useState } from "react";
 
 import { getId, updateCategoryDone } from "../api/loginDetails";
 
-import { signUpCountAdder } from "../utilis/variables";
-
 const Category = ({ onCategoryEnterSuccess }) => {
   const initialCategoryForm = {
     sleep: false,
@@ -54,7 +52,6 @@ const Category = ({ onCategoryEnterSuccess }) => {
               }
               alert("Success!");
               updateCategoryDone(true);
-              signUpCountAdder();
               onCategoryEnterSuccess();
             })
             .catch((err) => {

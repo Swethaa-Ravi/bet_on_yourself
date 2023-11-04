@@ -8,7 +8,9 @@ const SignUp = () => {
     password: "",
     isAddnDataEntered: false,
     isCategoryAdded: false,
+    isNoOfDaysEntered: false,
     isPaymentDone: false,
+    isProgramStart: false,
   };
 
   const [signUpForm, setSignUpData] = useState(initialFormData);

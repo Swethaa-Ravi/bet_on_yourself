@@ -37,7 +37,7 @@ const LogIn = ({ onLoginSuccess }) => {
             updateAddnDone(resp.isAddnDataEntered);
             updateCategoryDone(resp.isCategoryAdded);
             updatePaymentDone(resp.isPaymentDone);
-            onLoginSuccess();
+            // onLoginSuccess();
           } else {
             alert("Email & Password doesn't match");
           }

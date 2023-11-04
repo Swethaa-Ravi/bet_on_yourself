@@ -7,7 +7,9 @@
       "password": "123456",
       "isAddnDataEntered": true,
       "isCategoryAdded": true,
+      "isNoOfDaysEntered": true,
       "isPaymentDone": true,
+      "isProgramStart": false,
       "addnInfo": {
         "location": "pune",
         "age": "22",
@@ -17,7 +19,9 @@
         "sleep",
         "cardio"
       ],
-      "selectedOption": "upi"
+      "selectedOption": "upi",
+      "programStartDateTime": "28/10/2023, 3:11:50 pm",
+      "selectedNoOfDays": "21"
     },
     {
       "fname": "Varun",
@@ -26,7 +30,9 @@
       "password": "12345678",
       "isAddnDataEntered": true,
       "isCategoryAdded": true,
+      "isNoOfDaysEntered": true,
       "isPaymentDone": true,
+      "isProgramStart": true,
       "addnInfo": {
         "location": "coimbatore",
         "age": "22",
@@ -36,45 +42,10 @@
         "sleep",
         "cardio"
       ],
-      "selectedOption": "wallets"
-    },
-    {
-      "fname": "Keshava",
-      "lname": "Raja",
-      "id": "keshav@gmail.com",
-      "password": "12345678",
-      "isAddnDataEntered": true,
-      "isCategoryAdded": true,
-      "isPaymentDone": true,
-      "addnInfo": {
-        "location": "chennai",
-        "age": "21",
-        "occupation": "student"
-      },
-      "selectedCategories": [
-        "sleep",
-        "cardio"
-      ],
-      "selectedOption": "upi"
-    },
-    {
-      "fname": "Tharun",
-      "lname": "Kumar",
-      "id": "tharun@gmail.com",
-      "password": "12345678",
-      "isAddnDataEntered": true,
-      "isCategoryAdded": true,
-      "isPaymentDone": true,
-      "addnInfo": {
-        "location": "chennai",
-        "age": "22",
-        "occupation": "student"
-      },
-      "selectedCategories": [
-        "yoga",
-        "morningRoutine"
-      ],
-      "selectedOption": "upi"
+      "selectedNoOfDays": "14",
+      "selectedOption": "upi",
+      "programStartDateTime": "2023-11-04T02:41:46.358Z",
+      "programEndDateTime": "2023-11-18T02:41:46.358Z"
     }
   ]
 }

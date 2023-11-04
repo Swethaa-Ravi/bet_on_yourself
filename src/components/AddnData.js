@@ -4,8 +4,6 @@ import { updateAddnDone } from "../api/loginDetails";
 
 import { getId } from "../api/loginDetails";
 
-import { signUpCountAdder } from "../utilis/variables";
-
 const AddnData = ({ onDataEnterSuccess }) => {
   const initialAddnForm = {
     age: "",
@@ -53,7 +51,6 @@ const AddnData = ({ onDataEnterSuccess }) => {
               }
               alert("Success!");
               updateAddnDone(true);
-              signUpCountAdder();
               onDataEnterSuccess();
             })
             .catch((err) => {

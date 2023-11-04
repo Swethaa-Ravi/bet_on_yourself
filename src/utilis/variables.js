@@ -1,11 +1,36 @@
-let x = 0;
+let NoOfDaysEntered = 0;
+let ProgStartDate = "";
+let ProgEndDate = "";
 
-function getSignUpCount() {
-  return x;
+function updateNoOfDaysEntered(value) {
+  NoOfDaysEntered = value;
 }
 
-function signUpCountAdder() {
-  x = x + 1;
+function getNoOfDaysEntered() {
+  return NoOfDaysEntered;
 }
 
-export { getSignUpCount, signUpCountAdder };
+function updateProgStartDate(value) {
+  ProgStartDate = value;
+}
+
+function getProgStartDate() {
+  return ProgStartDate;
+}
+
+function updateProgEndDate(value) {
+  ProgEndDate = value;
+}
+
+function getProgEndDate() {
+  return ProgEndDate;
+}
+
+export {
+  updateNoOfDaysEntered,
+  getNoOfDaysEntered,
+  updateProgStartDate,
+  getProgStartDate,
+  updateProgEndDate,
+  getProgEndDate,
+};

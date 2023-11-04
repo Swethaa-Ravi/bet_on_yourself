@@ -1,14 +1,23 @@
 import { useState } from "react";
-import { getId, updatePaymentDone } from "../api/loginDetails";
 
-const PaymentPortal = ({ onPaymentEnterSuccess }) => {
-  const [selectedOption, setSelectedOption] = useState("");
+import { updateNoOfDaysDone } from "../api/loginDetails";
 
-  const handlePaymentChange = (event) => {
+import { getId } from "../api/loginDetails";
+
+import { updateNoOfDaysEntered } from "../utilis/variables";
+
+const NoOfDays = ({ onDaysEnterSuccess }) => {
+  const initialAddnForm = {
+    noOfDays: 0,
+  };
+
+  const [selectedOption, setSelectedOption] = useState(initialAddnForm);
+
+  const handleDaysChange = (event) => {
     setSelectedOption(event.target.value);
   };
 
-  const handlePaymentsOption = (event) => {
+  const handleDaysOption = (event) => {
     event.preventDefault();
     // Fetch the user data by ID from the server
     fetch(`http://localhost:8000/users?id=${getId()}`)
@@ -21,8 +30,8 @@ const PaymentPortal = ({ onPaymentEnterSuccess }) => {
           // Update the existing user data with additional information
           const updatedUser = {
             ...existingUser,
-            selectedOption,
-            isPaymentDone: true, // Set isAddnDataEntered to true
+            isNoOfDaysEntered: true,
+            selectedNoOfDays: selectedOption,
           };
 
           // Send the updated user data to the server
@@ -36,8 +45,9 @@ const PaymentPortal = ({ onPaymentEnterSuccess }) => {
                 throw new Error("Sign Up Failed");
               }
               alert("Success!");
-              updatePaymentDone(true);
-              onPaymentEnterSuccess();
+              updateNoOfDaysDone(true);
+              updateNoOfDaysEntered(selectedOption);
+              onDaysEnterSuccess();
             })
             .catch((err) => {
               alert("Failed: " + err.message);
@@ -54,47 +64,37 @@ const PaymentPortal = ({ onPaymentEnterSuccess }) => {
   return (
     <div>
       <div>
-        <h3>Payments</h3>
-        <h4>Choose Your Preferred Payment Method</h4>
-        <form onSubmit={handlePaymentsOption}>
+        <h3>Days</h3>
+        <h4>Choose No. of Days</h4>
+        <form onSubmit={handleDaysOption}>
           <label>
             <input
               type="radio"
-              value="creditdebit"
-              checked={selectedOption === "credit_debit"}
-              onChange={handlePaymentChange}
+              value="21"
+              checked={selectedOption === "21"}
+              onChange={handleDaysChange}
             />
-            Credit/Debit Card
+            21
           </label>
           <br />
           <label>
             <input
               type="radio"
-              value="upi"
-              checked={selectedOption === "upi"}
-              onChange={handlePaymentChange}
+              value="14"
+              checked={selectedOption === "14"}
+              onChange={handleDaysChange}
             />
-            UPI
+            14
           </label>
           <br />
           <label>
             <input
               type="radio"
-              value="wallets"
-              checked={selectedOption === "wallets"}
-              onChange={handlePaymentChange}
+              value="7"
+              checked={selectedOption === "7"}
+              onChange={handleDaysChange}
             />
-            Wallets
-          </label>
-          <br />
-          <label>
-            <input
-              type="radio"
-              value="paylater"
-              checked={selectedOption === "paylater"}
-              onChange={handlePaymentChange}
-            />
-            Pay Later
+            7
           </label>
           <br />
           <button type="submit">Submit</button>
@@ -104,4 +104,4 @@ const PaymentPortal = ({ onPaymentEnterSuccess }) => {
   );
 };
 
-export default PaymentPortal;
+export default NoOfDays;
