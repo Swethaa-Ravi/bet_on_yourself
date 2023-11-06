@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { getId } from "../api/loginDetails";
 
@@ -7,6 +7,8 @@ import {
   getProgStartDate,
   getNoOfDaysEntered,
 } from "../utilis/variables";
+
+import CategoryForm from "../components/categoryForm";
 
 function formatDate(date) {
   const options = {
@@ -34,8 +36,10 @@ function ProgressPage() {
   const noOfDays = getNoOfDaysEntered();
   const currentDay = calculateCurrentDay(startDate);
   const dayButtons = [];
-  const [dayVal, setDayVal] = useState(0);
+  const [dayVal, setDayVal] = useState(currentDay);
   const [dayData, setDayData] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
   let Id = getId();
 
   const handleDayButtonClick = (day, Id) => {
@@ -46,12 +50,65 @@ function ProgressPage() {
       .then((response) => response.json())
       .then((data) => {
         setDayData(data.programData[day - 1].dayData);
-        console.log(dayData);
       })
       .catch((error) => {
         console.error("Error fetching data: ", error);
       });
   };
+
+  const handleFormSubmit = (updatedCategoryData) => {
+    fetch(`http://localhost:8000/users/${Id}`)
+      .then((response) => response.json())
+      .then((userData) => {
+        const updatedUserData = { ...userData };
+        const updatedProgramData = [...updatedUserData.programData];
+
+        // Find the specific dayData array to update
+        const dayDataIndex = updatedProgramData.findIndex(
+          (dayData) => dayData.day === dayVal
+        );
+
+        // Update the dayData array for the selected day
+        if (dayDataIndex !== -1) {
+          updatedProgramData[dayDataIndex].dayData = updatedProgramData[
+            dayDataIndex
+          ].dayData.map((category) =>
+            category.category === updatedCategoryData.category
+              ? updatedCategoryData
+              : category
+          );
+
+          // Update the programData object in the user data
+          updatedUserData.programData = updatedProgramData;
+
+          // Send the updated user data to the server
+          fetch(`http://localhost:8000/users/${Id}/`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedUserData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Data successfully updated: ", data);
+            })
+            .catch((error) => {
+              console.error("Error updating data: ", error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching user data: ", error);
+      });
+  };
+
+  useEffect(() => {
+    if (currentDay !== 0 && !loaded) {
+      setDayVal(currentDay);
+      setLoaded(true);
+    }
+  }, [currentDay, loaded]);
 
   for (let day = 1; day <= noOfDays; day++) {
     dayButtons.push(
@@ -76,15 +133,22 @@ function ProgressPage() {
       {dayVal !== 0 ? (
         <div>
           <h2>Day {dayVal}</h2>
-          {dayData.map((category, index) => (
-            <div key={index}>
-              <h3>{category.category}</h3>
-              <input type="text" placeholder="Enter URL" />
-              <button>Upload</button>
-              <br></br>
-              {category.categoryStatus ? "✔️" : "❌"}
-            </div>
-          ))}
+
+          <div>
+            {dayData.map((category, index) => (
+              <div key={index}>
+                <h2>{category.title}</h2>
+                {category.categorySubmit ? (
+                  <p>Great! You have upload for the day</p>
+                ) : (
+                  <CategoryForm
+                    category={category}
+                    onFormSubmit={handleFormSubmit}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       ) : (
         <div></div>

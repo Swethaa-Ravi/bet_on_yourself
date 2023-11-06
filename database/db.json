@@ -16,13 +16,27 @@
           "dayData": [
             {
               "category": "sleep",
-              "categoryURL": "",
-              "categoryStatus": true
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": true,
+              "submitTime": "8:53:15 am",
+              "bed_time": "21:54",
+              "sleep_start": "21:54",
+              "sleep_duration": "8 Hrs",
+              "sleep_quality": "80",
+              "proof": "drive.com"
             },
             {
               "category": "cardio",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "time_start": "",
+              "excercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
             }
           ]
         },
@@ -31,13 +45,27 @@
           "dayData": [
             {
               "category": "sleep",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
             },
             {
               "category": "cardio",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "time_start": "",
+              "excercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
             }
           ]
         },
@@ -46,13 +74,27 @@
           "dayData": [
             {
               "category": "sleep",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
             },
             {
               "category": "cardio",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "time_start": "",
+              "excercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
             }
           ]
         },
@@ -61,13 +103,27 @@
           "dayData": [
             {
               "category": "sleep",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
             },
             {
               "category": "cardio",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "time_start": "",
+              "excercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
             }
           ]
         },
@@ -76,13 +132,27 @@
           "dayData": [
             {
               "category": "sleep",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
             },
             {
               "category": "cardio",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "time_start": "",
+              "excercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
             }
           ]
         },
@@ -91,13 +161,27 @@
           "dayData": [
             {
               "category": "sleep",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
             },
             {
               "category": "cardio",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "time_start": "",
+              "excercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
             }
           ]
         },
@@ -106,13 +190,27 @@
           "dayData": [
             {
               "category": "sleep",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
             },
             {
               "category": "cardio",
-              "categoryURL": "",
-              "categoryStatus": false
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": false,
+              "submitTime": "",
+              "time_start": "",
+              "excercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
             }
           ]
         }
@@ -122,11 +220,14 @@
         "age": "22",
         "occupation": "web developer"
       },
-      "selectedCategories": ["sleep", "cardio"],
+      "selectedCategories": [
+        "sleep",
+        "cardio"
+      ],
       "selectedNoOfDays": "7",
-      "selectedOption": "wallets",
-      "programStartDateTime": "2023-11-04T12:37:20.599Z",
-      "programEndDateTime": "2023-11-11T12:37:20.599Z"
+      "selectedOption": "upi",
+      "programStartDateTime": "2023-11-06T03:11:28.836Z",
+      "programEndDateTime": "2023-11-13T03:11:28.836Z"
     }
   ]
 }

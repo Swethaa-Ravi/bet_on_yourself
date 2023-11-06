@@ -17,12 +17,38 @@ const programStart = (NoOfDays, date) => {
   const numberOfDays = getNoOfDaysEntered();
   const dateTimeInfo = getCurrentAndFutureDateTime(NoOfDays, date);
 
+  const categoryData = {
+    sleep: {
+      category: "sleep",
+      title: "Sleep",
+      categoryStatus: false,
+      categorySubmit: false,
+      submitTime: "",
+      bed_time: "",
+      sleep_start: "",
+      sleep_duration: "",
+      sleep_quality: "",
+      proof: "",
+    },
+    cardio: {
+      category: "cardio",
+      title: "Cardio",
+      categoryStatus: false,
+      categorySubmit: false,
+      submitTime: "",
+      time_start: "",
+      excercise_type: "",
+      duration: "",
+      distance: "",
+      proof: "",
+    },
+  };
+
   fetch(`http://localhost:8000/users?id=${getId()}`)
     .then((res) => res.json())
     .then((userData) => {
       if (userData.length > 0) {
         const existingUser = userData[0];
-
         const programData = [];
 
         for (let i = 0; i < numberOfDays; i++) {
@@ -30,12 +56,7 @@ const programStart = (NoOfDays, date) => {
           const dayData = [];
 
           categories.forEach((category) => {
-            // Assuming you have a function to get the URL for the category
-            const categoryURL = "";
-            // Initial status is set to false, indicating not completed
-            const categoryStatus = false;
-
-            dayData.push({ category, categoryURL, categoryStatus });
+            dayData.push(categoryData[category]);
           });
 
           programData.push({ day, dayData });
