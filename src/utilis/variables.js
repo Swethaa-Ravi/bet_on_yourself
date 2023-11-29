@@ -6,6 +6,7 @@ let AddnDone = false;
 let CategoryDone = false;
 let DaysDone = false;
 let PaymentDone = false;
+let ProgramStart = false;
 
 function updateAddnDone(value) {
   AddnDone = value;
@@ -71,6 +72,14 @@ function getCategoryEntered() {
   return CategoryEntered;
 }
 
+function updateProgramStart(value) {
+  ProgramStart = value;
+}
+
+function getProgramStart() {
+  return ProgramStart;
+}
+
 export {
   updateNoOfDaysEntered,
   getNoOfDaysEntered,
@@ -88,4 +97,6 @@ export {
   getNoOfDaysDone,
   updatePaymentDone,
   getPaymentDone,
+  updateProgramStart,
+  getProgramStart,
 };

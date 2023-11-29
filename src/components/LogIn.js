@@ -6,9 +6,13 @@ import {
   updateCategoryDone,
   updatePaymentDone,
   updateNoOfDaysDone,
+  updateProgramStart,
+  updateProgStartDate,
+  updateProgEndDate,
+  updateNoOfDaysEntered,
 } from "../utilis/variables";
 
-const LogIn = ({ onLoginSuccess }) => {
+const LogIn = ({ reverseLogInVisible, onLoginSuccess }) => {
   const [loginForm, setFormData] = useState({
     email: "",
     password: "",
@@ -30,7 +34,8 @@ const LogIn = ({ onLoginSuccess }) => {
           alert("Enter Valid User!");
         } else {
           if (loginForm.password === resp.password) {
-            alert("Verification Successful");
+            // alert("Verification Successful");
+            reverseLogInVisible();
             updateToken(true);
             updateName(resp.fname);
             updateId(resp.id);
@@ -38,6 +43,11 @@ const LogIn = ({ onLoginSuccess }) => {
             updateCategoryDone(resp.isCategoryAdded);
             updateNoOfDaysDone(resp.isNoOfDaysEntered);
             updatePaymentDone(resp.isPaymentDone);
+            updateProgramStart(resp.isProgramStart);
+            updateProgStartDate(resp.programStartDateTime);
+            updateProgEndDate(resp.programEndDateTime);
+            updateNoOfDaysEntered(resp.selectedNoOfDays);
+            onLoginSuccess();
           } else {
             alert("Email & Password doesn't match");
           }

@@ -6,6 +6,7 @@ import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import { getToken, updateToken } from "../api/tempAuth";
 import { getName, updateName, updateId } from "../api/loginDetails";
+import { updateProgramStart } from "../utilis/variables";
 
 Modal.setAppElement("#root");
 
@@ -45,16 +46,24 @@ const Navbar = () => {
     setIsLoggedIn(false);
     updateId(null);
     updateName(null);
+    updateProgramStart(false);
   };
 
   return (
     <nav>
-      <Link to="/progress">
-        <button>Progress</button>
-      </Link>
-      <Link to="/aboutUs">
+      {isLoggedIn ? (
+        <Link to="/progress">
+          <button>Progress</button>
+        </Link>
+      ) : (
+        <Link to="/progSignUp">
+          <button>Start off your Program Now</button>
+        </Link>
+      )}
+
+      {/* <Link to="/aboutUs">
         <button>About Us</button>
-      </Link>
+      </Link> */}
 
       {isLoggedIn ? (
         <div>
@@ -71,12 +80,12 @@ const Navbar = () => {
       <Modal isOpen={signUpVisible}>
         <button onClick={() => reverseSignUpVisible()}>X</button>
 
-        <SignUp />
+        <SignUp reverseSignUpVisible={reverseSignUpVisible} />
       </Modal>
 
       <Modal isOpen={logInVisible}>
         <button onClick={() => reverseLogInVisible()}>X</button>
-        <LogIn />
+        <LogIn reverseLogInVisible={reverseLogInVisible} />
       </Modal>
     </nav>
   );

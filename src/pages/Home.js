@@ -1,4 +1,8 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import { getProgramStart } from "../utilis/variables";
+
 import jeffToAdo from "../assests/images/jeffToAdo.png";
 import adoHope from "../assests/images/adonis1.png";
 import adoGreatness from "../assests/images/adonis.png";
@@ -6,6 +10,36 @@ import adoHand from "../assests/images/adonisHand.png";
 import Navbar from "../components/Navbar";
 
 function HomePage() {
+  const [isProgramStart, setProgramStart] = useState(getProgramStart());
+  const [redirectModalVisible, setRedirectModalVisible] = useState(false);
+  const [checkVar, setCheckVar] = useState(true);
+
+  useEffect(() => {
+    const getAndSetToken = () => {
+      const newProgramStart = getProgramStart();
+
+      if (newProgramStart && !isProgramStart) {
+        setRedirectModalVisible(true);
+      }
+
+      setProgramStart(newProgramStart);
+    };
+
+    getAndSetToken();
+
+    const intervalId = setInterval(() => {
+      getAndSetToken();
+    }, 100);
+
+    return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const closeModal = () => {
+    setCheckVar(false);
+    setRedirectModalVisible(false);
+  };
+
   return (
     <div>
       <h1>Bet On Self</h1>
@@ -56,14 +90,35 @@ function HomePage() {
         style={{ width: "650px", height: "350px" }}
       />
       <br></br>
-      <Link to="/progSignUp">
-        <button style={{ width: "100px", height: "50px" }}>
-          Click here to Sign Up
-        </button>
-      </Link>
-      <Link to="/aboutUs">
-        <button>About Us</button>
-      </Link>
+      <div>
+        {isProgramStart ? (
+          <div>
+            <p>Looks like you have already Started the Program</p>
+            <Link to="/progress">
+              <button style={{ width: "350px", height: "50px" }}>
+                Click to Proceed to Progress Page
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <div>
+            <Link to="/progSignUp">
+              <button style={{ width: "220px", height: "50px" }}>
+                Start off your Program Now
+              </button>
+            </Link>
+          </div>
+        )}
+      </div>
+      <Modal isOpen={redirectModalVisible && checkVar}>
+        <button onClick={() => closeModal()}>X</button>{" "}
+        <p>Looks like you have already Started the Program</p>
+        <Link to="/progress">
+          <button style={{ width: "350px", height: "50px" }}>
+            Click to Proceed to Progress Page
+          </button>
+        </Link>
+      </Modal>
     </div>
   );
 }

@@ -32,7 +32,8 @@ function calculateCurrentDay(startDate) {
 function ProgressPage() {
   const startDate = new Date(getProgStartDate());
   const formattedStartDate = formatDate(startDate);
-  const endDate = formatDate(getProgEndDate());
+  const endDate = new Date(getProgEndDate());
+  const formattedEndDate = formatDate(endDate);
   const noOfDays = getNoOfDaysEntered();
   const currentDay = calculateCurrentDay(startDate);
   const dayButtons = [];
@@ -42,10 +43,9 @@ function ProgressPage() {
 
   let Id = getId();
 
-  const handleDayButtonClick = (day, Id) => {
+  const handleDayButtonClick = (day) => {
     setDayVal(day);
 
-    // Fetch data from the server when a Day x button is pressed
     fetch(`http://localhost:8000/users/${Id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -56,6 +56,14 @@ function ProgressPage() {
       });
   };
 
+  useEffect(() => {
+    if (!loaded) {
+      handleDayButtonClick(currentDay);
+      setLoaded(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentDay, loaded]);
+
   const handleFormSubmit = (updatedCategoryData) => {
     fetch(`http://localhost:8000/users/${Id}`)
       .then((response) => response.json())
@@ -63,12 +71,10 @@ function ProgressPage() {
         const updatedUserData = { ...userData };
         const updatedProgramData = [...updatedUserData.programData];
 
-        // Find the specific dayData array to update
         const dayDataIndex = updatedProgramData.findIndex(
           (dayData) => dayData.day === dayVal
         );
 
-        // Update the dayData array for the selected day
         if (dayDataIndex !== -1) {
           updatedProgramData[dayDataIndex].dayData = updatedProgramData[
             dayDataIndex
@@ -78,10 +84,8 @@ function ProgressPage() {
               : category
           );
 
-          // Update the programData object in the user data
           updatedUserData.programData = updatedProgramData;
 
-          // Send the updated user data to the server
           fetch(`http://localhost:8000/users/${Id}/`, {
             method: "PATCH",
             headers: {
@@ -91,7 +95,7 @@ function ProgressPage() {
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log("Data successfully updated: ", data);
+              handleDayButtonClick(dayVal);
             })
             .catch((error) => {
               console.error("Error updating data: ", error);
@@ -115,7 +119,7 @@ function ProgressPage() {
       <button
         key={day}
         onClick={() => {
-          handleDayButtonClick(day, Id);
+          handleDayButtonClick(day);
         }}
       >
         Day {day}
@@ -125,27 +129,59 @@ function ProgressPage() {
 
   return (
     <div>
-      <h2>Start Date: {formattedStartDate}</h2>
-      <h2>End Date: {endDate}</h2>
-      <h2> No. of Days Chosen: {noOfDays}</h2>
-      <h2>Today: Day {currentDay}</h2>
+      <h3>Start Date: {formattedStartDate}</h3>
+      <h3>End Date: {formattedEndDate}</h3>
+      <h3> No. of Days Chosen: {noOfDays}</h3>
+      <h3>Today: Day {currentDay}</h3>
       <div>{dayButtons}</div>
       {dayVal !== 0 ? (
         <div>
           <h2>Day {dayVal}</h2>
-
           <div>
             {dayData.map((category, index) => (
               <div key={index}>
                 <h2>{category.title}</h2>
-                {category.categorySubmit ? (
-                  <p>Great! You have upload for the day</p>
-                ) : (
-                  <CategoryForm
-                    category={category}
-                    onFormSubmit={handleFormSubmit}
-                  />
-                )}
+                {(() => {
+                  switch (category.categorySubmit) {
+                    case "yet_to_upload":
+                      return (
+                        <div>
+                          <CategoryForm
+                            category={category}
+                            onFormSubmit={handleFormSubmit}
+                          />
+                          <p>Update Now</p>
+                        </div>
+                      );
+
+                    case "processing":
+                      return (
+                        <div>
+                          <h4>Status</h4>
+                          <p>Submitted for review</p>
+                        </div>
+                      );
+                    case "verified":
+                      return (
+                        <div>
+                          <h4>Status</h4>
+                          <p>Successfully Verified, Keep Going!</p>
+                        </div>
+                      );
+                    case "not_uploaded":
+                      return (
+                        <div>
+                          <h4>Status</h4>
+                          <p>Time Exceeded, get back on track</p>
+                        </div>
+                      );
+
+                    default:
+                      return null;
+                  }
+                })()}
+                <h4>Verification</h4>
+                <div>{category.categoryStatus ? "✔️" : "❌"}</div>
               </div>
             ))}
           </div>

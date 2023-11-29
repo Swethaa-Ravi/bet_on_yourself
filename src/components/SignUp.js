@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SignUp = () => {
+const SignUp = ({ reverseSignUpVisible }) => {
   const initialFormData = {
     fname: "",
     lname: "",
@@ -34,7 +34,8 @@ const SignUp = () => {
         if (!res.ok) {
           throw new Error("Sign Up Failed"); // Throw an error if the response is not OK
         }
-        alert("Sign Up Successful");
+        // alert("Sign Up Successful");
+        reverseSignUpVisible();
       })
       .catch((err) => {
         console.log("Failed: " + err.message); // Set the error message in the state

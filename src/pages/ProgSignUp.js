@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Modal from "react-modal";
 
 import SignUp from "../components/SignUp";
@@ -16,19 +16,27 @@ import {
   getCategoryDone,
   getPaymentDone,
   getNoOfDaysDone,
+  getProgramStart,
 } from "../utilis/variables";
 import { getNoOfDaysEntered } from "../utilis/variables";
 import LogIn from "../components/LogIn";
 
 function ProgSignUpPage() {
+  const programStarted = getProgramStart();
   const [isLoggedIn, setIsLoggedIn] = useState(getToken());
   const [isAddnDataEnter, setAddnDataEnter] = useState(getAddnDone());
   const [isCategoryEnter, setCategoryEnter] = useState(getCategoryDone());
   const [isNoOfDaysEnter, setNoOfDays] = useState(getNoOfDaysDone());
   const [isPaymentDone, setPaymentDone] = useState(getPaymentDone());
+  const [signUpVisible, setSignUpVisible] = useState(false);
+  const [logInVisible, setLogInVisible] = useState(false);
 
   const [isPrgCnfVisible, setPrgCnfVisible] = useState(false);
   const [isRedirectBtnVisible, setRedirectBtnVisible] = useState(false);
+
+  if (programStarted) {
+    return <Navigate to="/progress" />;
+  }
 
   const getDoneRegistry = () => {
     return getAddnDone() && getCategoryDone() && getPaymentDone() && getToken();
@@ -47,6 +55,22 @@ function ProgSignUpPage() {
     }
   };
 
+  const reverseSignUpVisible = () => {
+    if (signUpVisible) {
+      setSignUpVisible(false);
+    } else {
+      setSignUpVisible(true);
+    }
+  };
+
+  const reverseLogInVisible = () => {
+    if (logInVisible) {
+      setLogInVisible(false);
+    } else {
+      setLogInVisible(true);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -61,16 +85,31 @@ function ProgSignUpPage() {
           </div>
         ) : (
           <div>
-            <SignUp />
-            <LogIn
-              onLoginSuccess={() => {
-                setIsLoggedIn(true);
-                setAddnDataEnter(getAddnDone());
-                setCategoryEnter(getCategoryDone());
-                setNoOfDays(getNoOfDaysDone());
-                setPaymentDone(getPaymentDone());
-              }}
-            />
+            <h3>Login To Continue</h3>
+            <button onClick={reverseSignUpVisible}>Sign Up</button>
+            <button onClick={reverseLogInVisible}>Log In</button>
+            <Modal isOpen={signUpVisible}>
+              <button onClick={() => reverseSignUpVisible()}>X</button>
+
+              <SignUp reverseSignUpVisible={reverseSignUpVisible} />
+            </Modal>
+
+            <Modal isOpen={logInVisible}>
+              <button onClick={() => reverseLogInVisible()}>X</button>
+              <LogIn
+                reverseLogInVisible={reverseLogInVisible}
+                onLoginSuccess={() => {
+                  setIsLoggedIn(true);
+                  setAddnDataEnter(getAddnDone());
+                  setCategoryEnter(getCategoryDone());
+                  setNoOfDays(getNoOfDaysDone());
+                  setPaymentDone(getPaymentDone());
+                }}
+              />
+            </Modal>
+
+            {/* <SignUp />
+            <LogIn /> */}
           </div>
         )}
       </div>
