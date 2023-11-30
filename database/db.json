@@ -143,11 +143,249 @@
         "age": "21",
         "occupation": "Advocate"
       },
-      "selectedCategories": ["sleep"],
+      "selectedCategories": [
+        "sleep"
+      ],
       "selectedNoOfDays": "7",
       "selectedOption": "paylater",
       "programStartDateTime": "2023-11-24T08:04:41.434Z",
       "programEndDateTime": "2023-12-01T08:04:41.434Z"
+    },
+    {
+      "fname": "Swethaa",
+      "lname": "Ravi",
+      "id": "swethaaravi06@gmail.com",
+      "password": "bleh",
+      "isAddnDataEntered": true,
+      "isCategoryAdded": true,
+      "isNoOfDaysEntered": true,
+      "isPaymentDone": true,
+      "isProgramStart": true,
+      "programData": [
+        {
+          "day": 1,
+          "dayData": [
+            {
+              "category": "sleep",
+              "title": "Sleep",
+              "categoryStatus": true,
+              "categorySubmit": "verified",
+              "submitTime": "6:53:38 PM",
+              "bed_time": "22:52",
+              "sleep_start": "23:00",
+              "sleep_stop": "06:00",
+              "sleep_duration": "7h 0m",
+              "sleep_quality": "85",
+              "proof": "Done"
+            },
+            {
+              "category": "cardio",
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "time_start": "",
+              "exercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "dayData": [
+            {
+              "category": "sleep",
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_end": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
+            },
+            {
+              "category": "cardio",
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "time_start": "",
+              "exercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "dayData": [
+            {
+              "category": "sleep",
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_end": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
+            },
+            {
+              "category": "cardio",
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "time_start": "",
+              "exercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "dayData": [
+            {
+              "category": "sleep",
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_end": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
+            },
+            {
+              "category": "cardio",
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "time_start": "",
+              "exercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "dayData": [
+            {
+              "category": "sleep",
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_end": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
+            },
+            {
+              "category": "cardio",
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "time_start": "",
+              "exercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "dayData": [
+            {
+              "category": "sleep",
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_end": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
+            },
+            {
+              "category": "cardio",
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "time_start": "",
+              "exercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "dayData": [
+            {
+              "category": "sleep",
+              "title": "Sleep",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "bed_time": "",
+              "sleep_start": "",
+              "sleep_end": "",
+              "sleep_duration": "",
+              "sleep_quality": "",
+              "proof": ""
+            },
+            {
+              "category": "cardio",
+              "title": "Cardio",
+              "categoryStatus": false,
+              "categorySubmit": "yet_to_upload",
+              "submitTime": "",
+              "time_start": "",
+              "exercise_type": "",
+              "duration": "",
+              "distance": "",
+              "proof": ""
+            }
+          ]
+        }
+      ],
+      "addnInfo": {
+        "location": "Pune",
+        "age": "22",
+        "occupation": "Data Engineering "
+      },
+      "selectedCategories": [
+        "sleep",
+        "cardio"
+      ],
+      "selectedNoOfDays": "7",
+      "selectedOption": "upi",
+      "programStartDateTime": "2023-11-30T13:22:40.426Z",
+      "programEndDateTime": "2023-12-07T13:22:40.426Z"
     }
   ],
   "admins": [
