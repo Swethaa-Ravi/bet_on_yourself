@@ -4,6 +4,8 @@ import { updateAddnDone } from "../utilis/variables";
 
 import { getId } from "../api/loginDetails";
 
+import apiUrl from "../utilis/config";
+
 const AddnData = ({ onDataEnterSuccess }) => {
   const initialAddnForm = {
     age: "",
@@ -21,7 +23,7 @@ const AddnData = ({ onDataEnterSuccess }) => {
   const handleAddnData = (event) => {
     event.preventDefault();
     // Fetch the user data by ID from the server
-    fetch(`http://localhost:8000/users?id=${getId()}`)
+    fetch(apiUrl + `/users?id=${getId()}`)
       .then((res) => res.json())
       .then((userData) => {
         // Check if the user exists
@@ -40,7 +42,7 @@ const AddnData = ({ onDataEnterSuccess }) => {
           };
 
           // Send the updated user data to the server
-          fetch(`http://localhost:8000/users/${getId()}`, {
+          fetch(apiUrl + `/users/${getId()}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(updatedUser),
@@ -49,7 +51,6 @@ const AddnData = ({ onDataEnterSuccess }) => {
               if (!res.ok) {
                 throw new Error("Sign Up Failed");
               }
-              alert("Success!");
               updateAddnDone(true);
               onDataEnterSuccess();
             })

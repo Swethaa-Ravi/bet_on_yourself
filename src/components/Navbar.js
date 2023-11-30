@@ -6,7 +6,7 @@ import SignUp from "./SignUp";
 import LogIn from "./LogIn";
 import { getToken, updateToken } from "../api/tempAuth";
 import { getName, updateName, updateId } from "../api/loginDetails";
-import { updateProgramStart } from "../utilis/variables";
+import { updateProgramStart, getProgramStart } from "../utilis/variables";
 
 Modal.setAppElement("#root");
 
@@ -16,6 +16,8 @@ const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(getToken());
 
+  const [isProgramStart, setProgramStart] = useState(getProgramStart());
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getAndSetToken = () => {
     setIsLoggedIn(getToken());
@@ -24,6 +26,23 @@ const Navbar = () => {
   useEffect(() => {
     getAndSetToken();
   }, [getAndSetToken]);
+
+  useEffect(() => {
+    const getAndSetToken = () => {
+      const newProgramStart = getProgramStart();
+
+      setProgramStart(newProgramStart);
+    };
+
+    getAndSetToken();
+
+    const intervalId = setInterval(() => {
+      getAndSetToken();
+    }, 100);
+
+    return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const reverseSignUpVisible = () => {
     if (signUpVisible) {
@@ -51,14 +70,22 @@ const Navbar = () => {
 
   return (
     <nav>
-      {isLoggedIn ? (
-        <Link to="/progress">
-          <button>Progress</button>
-        </Link>
+      {isProgramStart ? (
+        <div>
+          <Link to="/progress">
+            <button style={{ width: "280px", height: "30px" }}>
+              Click here to Proceed to Progress Page
+            </button>
+          </Link>
+        </div>
       ) : (
-        <Link to="/progSignUp">
-          <button>Start off your Program Now</button>
-        </Link>
+        <div>
+          <Link to="/progSignUp">
+            <button style={{ width: "200px", height: "25px" }}>
+              Start off your Program Now!
+            </button>
+          </Link>
+        </div>
       )}
 
       {/* <Link to="/aboutUs">

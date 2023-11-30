@@ -10,6 +10,8 @@ import {
 
 import CategoryForm from "../components/categoryForm";
 
+import apiUrl from "../utilis/config";
+
 function formatDate(date) {
   const options = {
     year: "numeric",
@@ -46,7 +48,7 @@ function ProgressPage() {
   const handleDayButtonClick = (day) => {
     setDayVal(day);
 
-    fetch(`http://localhost:8000/users/${Id}`)
+    fetch(apiUrl + `/users/${Id}`)
       .then((response) => response.json())
       .then((data) => {
         setDayData(data.programData[day - 1].dayData);
@@ -65,7 +67,7 @@ function ProgressPage() {
   }, [currentDay, loaded]);
 
   const handleFormSubmit = (updatedCategoryData) => {
-    fetch(`http://localhost:8000/users/${Id}`)
+    fetch(apiUrl + `/users/${Id}`)
       .then((response) => response.json())
       .then((userData) => {
         const updatedUserData = { ...userData };
@@ -86,7 +88,7 @@ function ProgressPage() {
 
           updatedUserData.programData = updatedProgramData;
 
-          fetch(`http://localhost:8000/users/${Id}/`, {
+          fetch(apiUrl + `/users/${Id}/`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",

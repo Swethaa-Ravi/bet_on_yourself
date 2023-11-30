@@ -12,6 +12,8 @@ import {
   updateNoOfDaysEntered,
 } from "../utilis/variables";
 
+import apiUrl from "../utilis/config";
+
 const LogIn = ({ reverseLogInVisible, onLoginSuccess }) => {
   const [loginForm, setFormData] = useState({
     email: "",
@@ -25,7 +27,7 @@ const LogIn = ({ reverseLogInVisible, onLoginSuccess }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    fetch("http://localhost:8000/users/" + loginForm.email)
+    fetch(apiUrl + "/users/" + loginForm.email)
       .then((res) => {
         return res.json();
       })

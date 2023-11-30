@@ -6,6 +6,7 @@ import {
   getNoOfDaysEntered,
 } from "../utilis/variables";
 
+import apiUrl from "../utilis/config";
 function getCurrentAndFutureDateTime(x, y) {
   const startDate = new Date(y);
   const endDate = new Date(startDate.getTime() + x * 24 * 60 * 60 * 1000);
@@ -45,7 +46,7 @@ const programStart = (NoOfDays, date) => {
     },
   };
 
-  fetch(`http://localhost:8000/users?id=${getId()}`)
+  fetch(apiUrl + `/users?id=${getId()}`)
     .then((res) => res.json())
     .then((userData) => {
       if (userData.length > 0) {
@@ -71,7 +72,7 @@ const programStart = (NoOfDays, date) => {
           programData: programData,
         };
 
-        fetch(`http://localhost:8000/users/${getId()}`, {
+        fetch(apiUrl + `/users/${getId()}`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(updatedUser),

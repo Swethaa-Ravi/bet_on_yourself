@@ -6,6 +6,8 @@ import { getId } from "../api/loginDetails";
 
 import { updateNoOfDaysEntered } from "../utilis/variables";
 
+import apiUrl from "../utilis/config";
+
 const NoOfDays = ({ onDaysEnterSuccess }) => {
   const initialAddnForm = {
     noOfDays: 0,
@@ -20,7 +22,7 @@ const NoOfDays = ({ onDaysEnterSuccess }) => {
   const handleDaysOption = (event) => {
     event.preventDefault();
     // Fetch the user data by ID from the server
-    fetch(`http://localhost:8000/users?id=${getId()}`)
+    fetch(apiUrl + `/users?id=${getId()}`)
       .then((res) => res.json())
       .then((userData) => {
         // Check if the user exists
@@ -35,7 +37,7 @@ const NoOfDays = ({ onDaysEnterSuccess }) => {
           };
 
           // Send the updated user data to the server
-          fetch(`http://localhost:8000/users/${getId()}`, {
+          fetch(apiUrl + `/users/${getId()}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(updatedUser),
@@ -44,7 +46,6 @@ const NoOfDays = ({ onDaysEnterSuccess }) => {
               if (!res.ok) {
                 throw new Error("Sign Up Failed");
               }
-              alert("Success!");
               updateNoOfDaysDone(true);
               updateNoOfDaysEntered(selectedOption);
               onDaysEnterSuccess();

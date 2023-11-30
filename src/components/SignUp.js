@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import apiUrl from "../utilis/config";
+
 const SignUp = ({ reverseSignUpVisible }) => {
   const initialFormData = {
     fname: "",
@@ -25,7 +27,7 @@ const SignUp = ({ reverseSignUpVisible }) => {
     event.preventDefault();
     setSignUpData(initialFormData); // Clear the form after submission
 
-    fetch("http://localhost:8000/users", {
+    fetch(apiUrl + "/users", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(signUpForm),

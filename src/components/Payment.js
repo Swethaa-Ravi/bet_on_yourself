@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getId } from "../api/loginDetails";
 import { updatePaymentDone } from "../utilis/variables";
+import apiUrl from "../utilis/config";
 
 const PaymentPortal = ({ onPaymentEnterSuccess }) => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -12,7 +13,7 @@ const PaymentPortal = ({ onPaymentEnterSuccess }) => {
   const handlePaymentsOption = (event) => {
     event.preventDefault();
     // Fetch the user data by ID from the server
-    fetch(`http://localhost:8000/users?id=${getId()}`)
+    fetch(apiUrl + `/users?id=${getId()}`)
       .then((res) => res.json())
       .then((userData) => {
         // Check if the user exists
@@ -27,7 +28,7 @@ const PaymentPortal = ({ onPaymentEnterSuccess }) => {
           };
 
           // Send the updated user data to the server
-          fetch(`http://localhost:8000/users/${getId()}`, {
+          fetch(apiUrl + `/users/${getId()}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(updatedUser),
@@ -36,7 +37,6 @@ const PaymentPortal = ({ onPaymentEnterSuccess }) => {
               if (!res.ok) {
                 throw new Error("Sign Up Failed");
               }
-              alert("Success!");
               updatePaymentDone(true);
               onPaymentEnterSuccess();
             })
